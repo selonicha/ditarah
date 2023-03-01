@@ -11,8 +11,9 @@
     <i class='bx bxl-c-plus-plus'></i>
     <span class="logo_name">Ditarah</span>
   </div>
-  <ul class="nav-links">'
+  <ul class="nav-links">
     <!--Dashboard admin only start-->
+
     @can('show dashboard')
     <li>
       <a href="dashboard">
@@ -23,6 +24,7 @@
         <li><a class="link_name" href="#">Dashboard</a></li>
       </ul>
     </li>
+
     @endcan
     <!--Dashboard admin only end-->
     <!--Home admin and user end-->
@@ -40,8 +42,8 @@
       <ul class="sub-menu">
         <li><a class="link_name" href="#">Konten</a></li>
         <li><a href="topikUtama">Topik utama</a></li>
-        <li><a href="#">Trending Isu</a></li>
-        <li><a href="#">Sejarah</a></li>
+        <li><a href="trendingIsu">Trending Isu</a></li>
+        <li><a href="sejarah">Sejarah</a></li>
         <li><a href="#">Kisah Inspiratif</a></li>
       </ul>
     </li>
@@ -52,6 +54,7 @@
     <!--Content only user end-->
 
     <!---Only admin start--->
+
     @can('show users')
     <li>
       <div class="iocn-link">
@@ -85,6 +88,7 @@
       </ul>
     </li>
     @endcan
+    @can('show nontifikasi')
     <li>
       <div class="iocn-link">
         <a href="#">
@@ -100,6 +104,7 @@
       </ul>
     </li>
 
+    @endcan
     @can('show profile')
     <div class="profile-details">
       <div class="profile-content">
@@ -109,8 +114,8 @@
         <div class="profile_name">Prem Shahi</div>
         <div class="job">Web Desginer</div>
       </div>
-      <div class="text-decoration-none" style="color:#fff; margin: right 5px;">
-        <a href="logout">
+      <div class="text-decoration-none" style="color:#fff; margin-right:15px;">
+        <a href="logout" style="z-index:100px;color:#fff">
           <i class='bx bx-log-out'></i>
         </a>
       </div>

@@ -1,16 +1,7 @@
  <div class="main-section p-5">
      <div class="nav-crud">
          <div class="row pb-2">
-             <div class="col">
-                 <div class="submit d-flex justify-content-start align-items-center">
-                     <a href="tambahTopikUtama" class="text-decoration-none">
-                         <button id="button-crud" class="button-crud fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">
-                             tambah
-                         </button>
-                     </a>
 
-                 </div>
-             </div>
              <div class="col justify-content-end d-flex ">
                  <form class="form">
                      <label for="search">
@@ -47,13 +38,13 @@
                              <th class="p-2">
                                  @yield('column5')
                              </th>
-                             <th class="p-2">Aksi</th>
+
                          </tr>
                      </thead>
                      <tbody>
                          <tr>
                              <th>
-                                 @yield()
+
                              </th>
                          </tr>
                      </tbody>

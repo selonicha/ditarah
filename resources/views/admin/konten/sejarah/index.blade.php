@@ -6,10 +6,10 @@ use App\Models\TopikUtama;
 @extends("template.sidebarAdmin")
 
 @section('title')
-Topik Utama
+Sejarah
 @endsection
 @section('navbar-name')
-Topik utama
+Sejarah
 @endsection
 
 @section('content')
@@ -31,8 +31,8 @@ Topik utama
                             </div>
                         </div>
                         <div class="col-1 d-flex justify-content-center align-items-center">
-                            <select name="" id="" class="form-select rounded-md outline-none cursor-pointer text-white" style="width:60px">
-                                <option selected="5" value="5">5</option>
+                            <select name="" id="" class="form-select rounded-md outline-none cursor-pointer text-white" style="">
+                                <option selected="5">5</option>
                                 <option value="10">10</option>
                             </select>
 
@@ -90,12 +90,10 @@ Topik utama
                                 <td class="p-2">{{$post->penulis}}</td>
                                 <td class="p-2">{{\Carbon\Carbon::parse($post->created_at)->isoFormat('D MMM YYYY, hh:mm')}}</td>
                                 <td class="p-2">{{\Carbon\Carbon::parse($post->updated_at)->isoFormat('D MMM YYYY, hh:mm')}}</td>
-                                <td class="p-2 d-flex">
+                                <td class="p-2">
                                     <a href="/showTopikUtama/{{$post->id}}" class="btn bx bxs-show"></a>
                                     <a href="/editTopikUtama/{{$post->id}}" class="btn bx bxs-pencil"></a>
-                                    <form action="/deleteTopikUtama/{{$post->id}}" method="delete" class="">
-                                       <div class="btn bx bxs-trash-alt"></div>
-                                    </form>
+                                    <a href="/deleteTopikUtama/{{$post->id}}" class="btn bx bxs-trash-alt"></a>
                                 </td>
                             </tr>
                             @empty

@@ -28,9 +28,10 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'show events']);
         Permission::create(['name' => 'show profile']);
         Permission::create(['name' => 'show default_profile']);
+        Permission::create(['name' => 'show nontifikasi']);
         // $admin = Permission::create(['name' => 'show dashboard', 'show event', 'show konten', 'show profile', 'show users']);
         // $superAdmin = Permission::create(['name' => 'show home', 'show kisah inspiratif', 'show sejarah']);
-        
+
         // create role
         $superAdmin = Role::create([
             'name' => 'super admin',
@@ -46,7 +47,7 @@ class RolePermissionSeeder extends Seeder
             'name' => 'user',
             'guard_name' => 'web'
         ]);
-        
+
 
         // create access permission
         $superAdmin->givePermissionTo([
@@ -54,7 +55,8 @@ class RolePermissionSeeder extends Seeder
             'show events',
             'show konten',
             'show users',
-            'show profile'
+            'show profile',
+            'show nontifikasi'
         ]);
 
         $admin->givePermissionTo([
@@ -62,7 +64,8 @@ class RolePermissionSeeder extends Seeder
             'show events',
             'show konten',
             'show users',
-            'show profile'
+            'show profile',
+            'show nontifikasi'
         ]);
 
         $user->givePermissionTo([
@@ -76,9 +79,9 @@ class RolePermissionSeeder extends Seeder
 
         // $superAdminRole = Role::findById(1);
         // $superAdminRole->assignRole('super admin');
-        
+
         // $adminRole = Role::findById(2);
         // $adminRole->assignRole('admin');
-        
+
     }
 }

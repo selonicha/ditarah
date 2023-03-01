@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\TopikUtama;
+?>
+
 @extends('template.master')
 
 @push('style')
@@ -9,19 +14,20 @@
 <div class="mycard p-3">
     <div class="crud-content">
         <div class="container">
-            <div class="row fw-bold p-2" style="font-size:1.5em;">Tambah Topik Utama</div>
+            <div class="row fw-bold p-2" style="font-size:1.5em;">Edit Topik Utama</div>
             <div class="row">
-                <form action='createContentTopikUtama' method="POST" class="login-form" enctype="multipart/form-data">
+                <form action="/updateTopikUtama/{{ $topikUtama['id'] }}" method="post" class="login-form" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="judul" placeholder="judul...">
+                        <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="judul" value="{{$topikUtama['judul']}}">
                     </div>
                     <div class="mb-1">
-                        <input type="text" class="form-control" id="writer" aria-describedby="writerHelp" name="penulis" placeholder="penulis...">
+                        <input type="text" class="form-control" id="writer" aria-describedby="writerHelp" name="penulis" value="{{$topikUtama['penulis']}}">
                     </div>
                     <div class="mb-3">
                         <label for="descriptionFormControlTextarea1" class="form-label"></label>
-                        <textarea class="form-control" id="descriptionFormControlTextarea1" rows="20" name="penjelasan" placeholder="penjelasan..."></textarea>
+                        <textarea class="form-control" id="descriptionFormControlTextarea1" rows="20" name="penjelasan">{{$topikUtama['penjelasan']}}</textarea>
                     </div>
                     <div class="row">
                         <fieldset class="upload_dropZone text-center mb-3 p-4">
@@ -34,9 +40,10 @@
 
                             <p class="small my-2">Drag &amp; Drop logo file sekitar area<br><i>or</i></p>
 
-                            <input id="upload_image_logo" data-post-name="image_logo" name="file" data-post-url="https://someplace.com/image/uploads/logos/" class="position-absolute invisible" type="file" multiple accept="image/jpeg, image/png, image/svg+xml" />
+                            <input id="upload_image_logo" data-post-name="image_logo" name="file" data-post-url="https://someplace.com/image/uploads/logos/" class="position-absolute invisible" type="file" multiple accept="image/jpeg, image/png, image/svg+xml" /> 
 
-                            <label class="btn btn-upload mb-3" for="upload_image_logo">pilih file</label>
+                            <label class=" btn btn-upload mb-3" for="upload_image_logo">pilih file</label>
+                            <img src="{{asset('storage/'.$topikUtama['file'])}}" alt="" style="height:300px !important;width:600px !important;">
 
                             <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
 
@@ -51,32 +58,15 @@
                         </svg>
                     </div>
                     <div class="row justify-content-center d-flex align-items-center">
-                        <!-- <div class="col ">
-                        <a href="closeCreate" class="text-decoration-none">
-                            <div class="submit d-flex justify-content-center align-items-center">
-                                <button id="button-close" class="fw-bold text-white btn" role="button" style="background-color:#e4e9f7; width:100px">batal</button>
-                            </div>
-                        </a>
-                    </div> -->
                         <div class="col ">
                             <div class="submit d-flex justify-content-center align-items-center">
-                                <button class="fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">selesai</button>
+                                <button class="fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">simpan</button>
                             </div>
-
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-
     </div>
-
 </div>
-</div>
-</div>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="{{asset('asset/js/template/crud.js')}}"></script>
-
 @endsection

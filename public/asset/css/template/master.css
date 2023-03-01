@@ -14,3 +14,18 @@ body {
 * {
     font-family: "Poppins", sans-serif;
 }
+
+.unique-char{
+    color:#1d1b31;
+}
+
+.btn-outline-primary{
+    color: #1d1b31;
+    background-color: transparent;
+    background-image: none;
+    border-color: #1d1b31 !important;
+}
+.btn-outline-primary:hover{
+    color: #fff;
+    background-color: #1d1b31;
+}

@@ -1,15 +1,14 @@
 <?php
 
-use App\Models\TopikUtama;
-
+use App\Models\TrendingIsu;
 ?>
 @extends("template.sidebarAdmin")
 
 @section('title')
-Topik Utama
+Trending Isu
 @endsection
 @section('navbar-name')
-Topik utama
+Trending Isu
 @endsection
 
 @section('content')
@@ -20,33 +19,19 @@ Topik utama
         <div class="nav-crud">
             <div class="row pb-2">
                 <div class="col">
-                    <div class="row">
-                        <div class="col-3" style="padding-right: 5px;">
-                            <div class="submit d-flex justify-content-start align-items-center">
-                                <a href="tambahTopikUtama" class="text-decoration-none">
-                                    <button id="button-crud" class="button-crud fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">
-                                        tambah
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-1 d-flex justify-content-center align-items-center">
-                            <select name="" id="" class="form-select rounded-md outline-none cursor-pointer text-white" style="width:60px">
-                                <option selected="5" value="5">5</option>
-                                <option value="10">10</option>
-                            </select>
+                    <div class="submit d-flex justify-content-start align-items-center">
+                        <a href="tambahTrendingIsu" class="text-decoration-none">
+                            <button id="button-crud" class="button-crud fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">
+                                tambah
+                            </button>
+                        </a>
 
-                        </div>
                     </div>
-
                 </div>
-
-
-                <div class=" col justify-content-end d-flex ">
-                    <form class=" form" action="/searchTopikUtama" method="get">
-                        @csrf
+                <div class="col justify-content-end d-flex ">
+                    <form class="form">
                         <label for="search">
-                            <input required="" autocomplete="off" placeholder="search..." id="search" type="text" name='search'>
+                            <input required="" autocomplete="off" placeholder="cari data" id="search" type="text">
                             <div class="icon">
                                 <i class="bx bx-search"></i>
                             </div>
@@ -62,12 +47,12 @@ Topik utama
         </div>
         <div class="mycard">
             <div class="content-part p-3">
-                <div class="col pb-3 ">
+                <div class="col">
                     <table class="">
                         <thead>
                             <tr>
                                 <th class="p-2">No</th>
-                                <th class="p-2">
+                                <th class="p-2" style="">
                                     Judul
                                 </th>
                                 <th class="p-2">
@@ -83,7 +68,7 @@ Topik utama
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse(TopikUtama::all() as $post)
+                            @forelse(TrendingIsu::simplePaginate(5) as $post)
                             <tr style="padding: 15px;" class="mb-5">
                                 <td class="p-2">{{$loop->iteration}}</td>
                                 <td class="p-2">{{$post->judul}}</td>
@@ -91,9 +76,9 @@ Topik utama
                                 <td class="p-2">{{\Carbon\Carbon::parse($post->created_at)->isoFormat('D MMM YYYY, hh:mm')}}</td>
                                 <td class="p-2">{{\Carbon\Carbon::parse($post->updated_at)->isoFormat('D MMM YYYY, hh:mm')}}</td>
                                 <td class="p-2 d-flex">
-                                    <a href="/showTopikUtama/{{$post->id}}" class="btn bx bxs-show"></a>
-                                    <a href="/editTopikUtama/{{$post->id}}" class="btn bx bxs-pencil"></a>
-                                    <form action="/deleteTopikUtama/{{$post->id}}" method="delete" class="">
+                                    <a href="/showTrendingIsu/{{$post->id}}" class="btn bx bxs-show"></a>
+                                    <a href="/editTrendingIsu/{{$post->id}}" class="btn bx bxs-pencil"></a>
+                                    <form action="/deleteTrendingIsu/{{$post->id}}" method="delete" class="">
                                        <div class="btn bx bxs-trash-alt"></div>
                                     </form>
                                 </td>
@@ -105,14 +90,13 @@ Topik utama
                             @endforelse
                         </tbody>
                     </table>
-                    <hr style="color:#1d1b31">
                 </div>
-
-                <div class="row" style="padding-left:10px;padding-right:10px">
-                    <div class="col fw-semibold" style="font-size: 0.8em;">Total {{$post->count()}} data</div>
-                    <div class="col d-flex justify-content-end">
-                        pagination
-                    </div>
+                <hr style="color:#1d1b31">
+            </div>
+            <div class="row" style="padding-left:10px;padding-right:10px">
+                <div class="col fw-semibold" style="font-size: 0.8em;">Total {{TrendingIsu::all()->count()}} data</div>
+                <div class="col d-flex justify-content-end">
+                    pagination
                 </div>
             </div>
         </div>

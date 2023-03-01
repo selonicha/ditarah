@@ -8,6 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TopikUtamaAdminController;
+use App\Http\Controllers\TopikUtamaUserController;
+use App\Http\Controllers\TrendingIsuAdminController;
+use App\Http\Controllers\TrendingIsuUserControlller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +29,13 @@ Route::get('/', function () {
 });
 
 // login 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/authLogin', [LoginController::class, 'processLogin']);
+// Route::get('/login', [LoginController::class, 'index']);
+// Route::post('/authLogin', [LoginController::class, 'processLogin']);
 
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index');
+    Route::post('/authLogin', 'processLogin');
+});
 // register
 Route::get('/register', [RegisterController::class, 'index']);
 
@@ -36,15 +43,35 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'index']);
 
 //Admin Topik Utama
-Route::get(
-    '/topikUtama',
-    [TopikUtamaAdminController::class, 'index']
+Route::controller(TopikUtamaAdminController::class)->group(function () {
+    Route::get('/topikUtama', 'index');
+    Route::get('/tambahTopikUtama', 'create');
+    Route::post('/createContentTopikUtama', 'saveCreate');
+    Route::get('/editTopikUtama/{id}', 'edit');
+    Route::put('/updateTopikUtama/{id}', 'update');
+    Route::get('/deleteTopikUtama/{id}', 'destroy');
+    Route::get('/showTopikUtama/{id}', 'show');
+});
 
-)->middleware('can:show dashboard');
-Route::get(
-    '/tambahTopikUtama',
-    [TopikUtamaAdminController::class, 'create']
+Route::controller(TrendingIsuAdminController::class)->group(function (){
+    Route::get('/trendingIsu', 'index');
+    Route::get('/tambahTrendingIsu', 'create');
+    Route::post('/createContentTrendingIsu', 'saveCreate');
+    Route::get('/editTrendingIsu/{id}', 'edit');
+    Route::put('/updateTrendingIsu/{id}', 'update');
+    Route::get('/deleteTrendingIsu/{id}', 'destroy');
+    Route::get('/showTrendingIsu/{id}', 'show');
+});
 
-);
-//Admin Event Login
-Route::get('/eventLogin', [EventLoginController::class, 'index']);
+
+
+// //Admin Event Login
+// Route::get('/eventLogin', [EventLoginController::class, 'index']);
+
+
+// //User 
+// //User Topik Utama
+// Route::get('/showTopikUtamaUser/{id}', [TopikUtamaUserController::class, 'index']);
+
+// //User Trending Isu
+// Route::get('/showTrendingIsuUser/{id}', [TrendingIsuUserControlller::class, 'index']);

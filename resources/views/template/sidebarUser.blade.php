@@ -122,10 +122,8 @@
       <div class="name-job">
         <a href="login" class="text-decoration-none">
           <a href="login" class="text-decoration-none">
-            <button class="fw-bold btn rounded-pill" role="button" style="background-color:#fff; width:100%">
-              <div class="profile_name" style="color:black">Saya Admin?</div>
-              <div class="job" style="color:black">klik ini</div>
-            </button>
+            <div class="profile_name" style="">Saya Admin?</div>
+            <div class="job" style="">klik ini</div>
           </a>
         </a>
       </div>

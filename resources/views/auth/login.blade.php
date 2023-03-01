@@ -14,8 +14,13 @@
                 <h5 class="fw-semid=bold d-flex justify-content-center ">welcome back!</h5>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="email...">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" name="email" placeholder="email...">
             </div>
+            @error('name')
+            <div class="invalid-feedback">
+                {{message}}
+            </div>
+            @enderror
             <div class="mb-3">
                 <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" name="password" placeholder="password...">
             </div>

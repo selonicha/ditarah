@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTopikUtamaTable extends Migration
+class CreateTrendingIsuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTopikUtamaTable extends Migration
      */
     public function up()
     {
-        Schema::create('topik_utama', function (Blueprint $table) {
+        Schema::create('trending_isu', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->string('penulis');
             $table->longText('penjelasan');
             $table->string('file')->nullable();
-            // $table->foreignId('user_id_now')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTopikUtamaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topik_utama');
+        Schema::dropIfExists('trending_isu');
     }
 }

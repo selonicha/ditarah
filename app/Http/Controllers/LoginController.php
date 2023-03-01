@@ -18,14 +18,17 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required',
 
-        ]);
+        // ],[
+        //     'email.required' => 'Email tidak boleh kosong',
+        //     'password.required' => 'Password tidak boleh kosong',
+        // 
+    ]);
 
         $checkAccount = [
             'email' => $request->email,
             'password' => $request->password,
 
         ];
-
 
         if (Auth::attempt($checkAccount)) {
             return view('admin.dashboard');

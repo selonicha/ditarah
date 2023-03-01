@@ -1,17 +1,17 @@
 @extends('template.master')
 
-@push('style')
+<!-- @push('style')
 <link rel="stylesheet" href="{{asset('asset/css/template/crud.css')}}">
-@endpush
+@endpush -->
 
 @section('value-body')
 
 <div class="mycard p-3">
     <div class="crud-content">
         <div class="container">
-            <div class="row fw-bold p-2" style="font-size:1.5em;">Tambah Topik Utama</div>
+            <div class="row fw-bold p-2" style="font-size:1.5em;">Tambah Trending Isu</div>
             <div class="row">
-                <form action='createContentTopikUtama' method="POST" class="login-form" enctype="multipart/form-data">
+                <form action='createContentTrendingIsu' method="POST" class="login-form" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="judul" placeholder="judul...">
@@ -59,6 +59,7 @@
                         </a>
                     </div> -->
                         <div class="col ">
+
                             <div class="submit d-flex justify-content-center align-items-center">
                                 <button class="fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">selesai</button>
                             </div>
