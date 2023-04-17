@@ -14,7 +14,7 @@ class CreateTrendingIsuTable extends Migration
     public function up()
     {
         Schema::create('trending_isu', function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->string('judul');
             $table->string('penulis');
             $table->longText('penjelasan');

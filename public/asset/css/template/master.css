@@ -13,6 +13,7 @@ body {
 
 * {
     font-family: "Poppins", sans-serif;
+    
 }
 
 .unique-char{
@@ -28,4 +29,9 @@ body {
 .btn-outline-primary:hover{
     color: #fff;
     background-color: #1d1b31;
+}
+
+.form-control .comment{
+    border: 0;
+    box-shadow: none
 }

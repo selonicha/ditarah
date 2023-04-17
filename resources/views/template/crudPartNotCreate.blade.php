@@ -1,7 +1,12 @@
  <div class="main-section p-5">
      <div class="nav-crud">
          <div class="row pb-2">
-
+             <div class="col">
+                 <select name="" id="" class="form-select rounded-md outline-none cursor-pointer text-white" style="width:60px">
+                     <option selected="5" value="5">5</option>
+                     <option value="10">10</option>
+                 </select>
+             </div>
              <div class="col justify-content-end d-flex ">
                  <form class="form">
                      <label for="search">

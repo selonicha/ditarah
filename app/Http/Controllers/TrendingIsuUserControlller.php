@@ -10,11 +10,6 @@ class TrendingIsuUserControlller extends Controller
 {
     public function index($id)
     {
-        $trendingIsu = TrendingIsu::find($id);
-        try {
-            return view('user.trendingIsu.index', compact(['trendingIsu']));
-        } catch (Exception $e) {
-            abort(404);
-        }
+        return view('user.trendingIsu.index');
     }
 }

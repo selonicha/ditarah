@@ -4,6 +4,10 @@
 Dashboard
 @endsection
 
+@section('title')
+Dashboard
+@endsection
+
 @section('content')
 <section class="home-section">
   @include('template.navbar')

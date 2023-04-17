@@ -1,6 +1,6 @@
-@extends('template.master')
+@extends('admin.konten.topikUtama.show')
 
+@section('comment-section')
+@include('template.comment')
 
-@section('value-body')
-hello
 @endsection

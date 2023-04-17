@@ -63,9 +63,7 @@ class RolePermissionSeeder extends Seeder
             'show dashboard',
             'show events',
             'show konten',
-            'show users',
             'show profile',
-            'show nontifikasi'
         ]);
 
         $user->givePermissionTo([

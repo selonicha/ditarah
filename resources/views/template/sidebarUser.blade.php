@@ -51,18 +51,18 @@
     <!--Content only user start-->
 
     <li>
-      <a href="#">
+      <a href="ceritaSejarah">
         <i class='bx bx-history'></i>
         <span class="link_name">Sejarah</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" href="#">Sejarah</a></li>
+        <li><a class="link_name" href="">Sejarah</a></li>
       </ul>
     </li>
 
 
     <li>
-      <a href="#">
+      <a href="ceritaKisahInspiratif">
         <i class='bx bx-book-heart'></i>
         <span class="link_name">Kisah Inspiratif</span>
       </a>
@@ -120,12 +120,11 @@
 
     <div class="default_profile profile-details d-flex justify-content-center align-items-center">
       <div class="name-job">
-        <a href="login" class="text-decoration-none">
-          <a href="login" class="text-decoration-none">
-            <div class="profile_name" style="">Saya Admin?</div>
-            <div class="job" style="">klik ini</div>
-          </a>
+        <a href="#login" class="text-decoration-none" data-bs-toggle="modal">
+          <div class="profile_name" style="">Saya Admin?</div>
+          <div class="job" style="">klik ini</div>
         </a>
+
       </div>
     </div>
 
@@ -135,6 +134,10 @@
 </div>
 
 @yield('content')
+
+@include('auth.login2')
+@include('auth.register2')
+
 <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {

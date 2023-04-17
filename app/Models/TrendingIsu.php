@@ -10,11 +10,12 @@ class TrendingIsu extends Model
     use HasFactory;
 
     protected $table = 'trending_isu';
+    public $incrementing = false;
     protected $fillable = [
+        'id',
         'judul',
         'penulis',
         'penjelasan',
         'file',
-
     ];
 }

@@ -21,7 +21,7 @@
         <span class="link_name">Dashboard</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" href="#">Dashboard</a></li>
+        <li><a class="link_name" href="dashboard">Dashboard</a></li>
       </ul>
     </li>
 
@@ -44,7 +44,7 @@
         <li><a href="topikUtama">Topik utama</a></li>
         <li><a href="trendingIsu">Trending Isu</a></li>
         <li><a href="sejarah">Sejarah</a></li>
-        <li><a href="#">Kisah Inspiratif</a></li>
+        <li><a href="kisahInspiratif">Kisah Inspiratif</a></li>
       </ul>
     </li>
     @endcan
@@ -99,7 +99,7 @@
       </div>
       <ul class="sub-menu">
         <li><a class="link_name" href="#">Nontifikasi</a></li>
-        <li><a href="eventLogin">calon admin</a></li>
+        <li><a href="/calonAdmin">calon admin</a></li>
 
       </ul>
     </li>
@@ -111,8 +111,8 @@
         <img src="image/profile.jpg" alt="profileImg">
       </div>
       <div class="name-job">
-        <div class="profile_name">Prem Shahi</div>
-        <div class="job">Web Desginer</div>
+        <div class="profile_name">{{Auth::user()->name}}</div>
+        <div class="job">{{Auth::user()->getRoleNames()}}</div>
       </div>
       <div class="text-decoration-none" style="color:#fff; margin-right:15px;">
         <a href="logout" style="z-index:100px;color:#fff">

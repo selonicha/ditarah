@@ -1,6 +1,5 @@
-@extends('template.master')
+@extends('admin.konten.trendingIsu.show')
 
-
-@section('value-body')
-hello
+@section('comment-section')
+@include('template.comment')
 @endsection

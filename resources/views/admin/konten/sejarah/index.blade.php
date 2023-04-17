@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\TopikUtama;
+use App\Models\Sejarah;
 
 ?>
 @extends("template.sidebarAdmin")
@@ -23,7 +23,7 @@ Sejarah
                     <div class="row">
                         <div class="col-3" style="padding-right: 5px;">
                             <div class="submit d-flex justify-content-start align-items-center">
-                                <a href="tambahTopikUtama" class="text-decoration-none">
+                                <a href="tambahSejarah" class="text-decoration-none">
                                     <button id="button-crud" class="button-crud fw-bold text-white btn" role="button" style="background-color:#1d1b31; width:100px">
                                         tambah
                                     </button>
@@ -83,7 +83,7 @@ Sejarah
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse(TopikUtama::all() as $post)
+                            @forelse(Sejarah::all() as $post)
                             <tr style="padding: 15px;" class="mb-5">
                                 <td class="p-2">{{$loop->iteration}}</td>
                                 <td class="p-2">{{$post->judul}}</td>
@@ -107,7 +107,7 @@ Sejarah
                 </div>
 
                 <div class="row" style="padding-left:10px;padding-right:10px">
-                    <div class="col fw-semibold" style="font-size: 0.8em;">Total {{$post->count()}} data</div>
+                    <div class="col fw-semibold" style="font-size: 0.8em;">Total {{Sejarah::count()}} data</div>
                     <div class="col d-flex justify-content-end">
                         pagination
                     </div>

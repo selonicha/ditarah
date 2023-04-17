@@ -43,10 +43,9 @@ Topik utama
 
 
                 <div class=" col justify-content-end d-flex ">
-                    <form class=" form" action="/searchTopikUtama" method="get">
-                        @csrf
+                    <form class="form" action="/topikUtama" method="get">
                         <label for="search">
-                            <input required="" autocomplete="off" placeholder="search..." id="search" type="text" name='search'>
+                            <input required="" autocomplete="off" placeholder="search..." id="search" type="text" wire:model="searchTopikUtama" name='searchTopikUtama'>
                             <div class="icon">
                                 <i class="bx bx-search"></i>
                             </div>
@@ -93,9 +92,10 @@ Topik utama
                                 <td class="p-2 d-flex">
                                     <a href="/showTopikUtama/{{$post->id}}" class="btn bx bxs-show"></a>
                                     <a href="/editTopikUtama/{{$post->id}}" class="btn bx bxs-pencil"></a>
-                                    <form action="/deleteTopikUtama/{{$post->id}}" method="delete" class="">
-                                       <div class="btn bx bxs-trash-alt"></div>
-                                    </form>
+                                    <a href="/deleteTopikUtama/{{$post->id}}" class="btn bx bxs-trash-alt"></a>
+                                    <!-- <form action="/deleteTopikUtama/{{$post->id}}" method="" class="">
+                                        <div class="btn bx bxs-trash-alt"></div>
+                                    </form> -->
                                 </td>
                             </tr>
                             @empty
@@ -109,7 +109,7 @@ Topik utama
                 </div>
 
                 <div class="row" style="padding-left:10px;padding-right:10px">
-                    <div class="col fw-semibold" style="font-size: 0.8em;">Total {{$post->count()}} data</div>
+                    <div class="col fw-semibold" style="font-size: 0.8em;">Total {{Topikutama::count()}} data</div>
                     <div class="col d-flex justify-content-end">
                         pagination
                     </div>
@@ -120,5 +120,42 @@ Topik utama
 
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $(document).on('keyup', '#search', () => {
+            const getValue = $(this).val();
 
+            $.ajax({
+                type: 'post',
+                url: '/searchTopikUtama',
+                data: {
+                    search
+                },
+                dataType: 'json',
+                success: (response) => {
+                    $('tbody').html(""),
+                        $.each(response, function(key, search) {
+                            $('tbody').append(
+                                `
+                            <tr style="padding: 15px;" class="mb-5">
+                                <td class="p-2">${search.id}</td>
+                                <td class="p-2">${search.judul}</td>
+                                <td class="p-2">${search.penulis}</td>
+                                <td class="p-2 d-flex">
+                                    <a href="/showTopikUtama/${post.id}" class="btn bx bxs-show"></a>
+                                    <a href="/editTopikUtama/${post.id}" class="btn bx bxs-pencil"></a>
+                                    <form action="/deleteTopikUtama/${post.id}" method="delete" class="">
+                                       <div class="btn bx bxs-trash-alt"></div>
+                                    </form>
+                                </td>
+                            </tr>
+                            `
+                            )
+                        });
+                }
+            })
+        })
+    })
+</script>
 @endsection

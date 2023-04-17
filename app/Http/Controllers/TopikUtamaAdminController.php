@@ -3,23 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\TopikUtama;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
-
-
 class TopikUtamaAdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = TopikUtama::all();
 
-        return view('admin.konten.topikUtama.index', compact('posts'));
+        $posts = TopikUtama::latest();
+
+
+        // $search = $request->searchTopikUtama;
+        // $posts = DB::table('topik_utama')->where('penulis', 'like', "%" . $search . "%");
+
+        return view('admin.konten.topikUtama.index', ['posts' => $posts]);
     }
 
+    public function search(Request $request)
+    {
+        $search = TopikUtama::where('judul', '=', '%' . $request->searchTopikUtama . '%')->orWhere('penulis', '=', '%' . $request->searchTopikUtama . '%')->get();
+        return json_encode($search);
+    }
     public function create()
     {
         return view('admin.konten.topikUtama.create');
@@ -35,17 +44,19 @@ class TopikUtamaAdminController extends Controller
 
         ]);
 
-        $newPost = [
+
+        $id = IdGenerator::generate(['table' => 'topik_utama', 'length' => 10, 'prefix' => 'KTU']);
+
+        DB::table('topik_utama')->insert([
+            'id' => $id,
             'judul' => $request->judul,
             'penjelasan' => $request->penjelasan,
             'file' => $request->file('file')->store('topik-utama'),
             'penulis' => $request->penulis,
+        ]);
 
-        ];
 
-        TopikUtama::create($newPost);
-
-        return view('admin.konten.topikUtama.index');
+        return redirect('topikUtama');
     }
 
     public function edit($id)
@@ -56,7 +67,7 @@ class TopikUtamaAdminController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $topikUtama = TopikUtama::find($id);
+
         $rules = [
             'judul' => 'required',
             'penulis' => 'required',
@@ -64,18 +75,7 @@ class TopikUtamaAdminController extends Controller
             'file' => 'image'
         ];
 
-        // $updatePost = [
-        //     'judul' => $request->judul,
-        //     'penulis' => $request->penulis,
-        //     'penjelasan' => $request->penjelasan,
-        //     'file' => $request->file('file')->store('topik-utama')
-        // ];
-        //$validateData = $request->validate($rules);
-        // $topikUtama = TopikUtama::find($id);
-        // $topikUtama->save([$request->all()]);
-        // //$topikUtama->update($updatePost);
 
-        // return view('admin.konten.topikUtama.index');
 
         DB::table('topik_utama')->where('id', $request->id)->update([
             'judul' => $request->judul,
@@ -92,24 +92,13 @@ class TopikUtamaAdminController extends Controller
 
         $topikUtama = TopikUtama::where('id', $id);
         $topikUtama->delete();
-        return ('admin.konten.topikUtama.index');
+        return view('admin.konten.topikUtama.index');
     }
 
     public function show(Request $request, $id)
     {
+        
         $topikUtama = TopikUtama::find($id);
         return view('admin.konten.topikUtama.show', compact(['topikUtama']))->with('success', 'Berhasil');
-    }
-
-    public function search(Request $request)
-    {
-        $posts = TopikUtama::all();
-        if ($request->has('search')) {
-            $posts->where('judul', 'like', '%' . $request('search') . '%');
-        } else {
-            $posts = TopikUtama::all();
-        }
-
-        return view('admin.konten.topikUtama.index', ['posts' => $posts]);
     }
 }

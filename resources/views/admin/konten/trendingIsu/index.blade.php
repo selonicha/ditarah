@@ -78,9 +78,7 @@ Trending Isu
                                 <td class="p-2 d-flex">
                                     <a href="/showTrendingIsu/{{$post->id}}" class="btn bx bxs-show"></a>
                                     <a href="/editTrendingIsu/{{$post->id}}" class="btn bx bxs-pencil"></a>
-                                    <form action="/deleteTrendingIsu/{{$post->id}}" method="delete" class="">
-                                       <div class="btn bx bxs-trash-alt"></div>
-                                    </form>
+                                    <a href="/deleteTrendingIsu/{{$post->id}}" class="btn bx bxs-trash-alt"></a>
                                 </td>
                             </tr>
                             @empty

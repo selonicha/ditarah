@@ -10,7 +10,9 @@ class TopikUtama extends Model
     use HasFactory;
 
     protected $table = 'topik_utama';
+    public $incrementing = false;
     protected $fillable = [
+        'id',
         'judul',
         'penulis',
         'penjelasan',
