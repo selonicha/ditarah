@@ -37,26 +37,27 @@ Route::get('/', function () {
 });
 
 // login 
-// Route::get('/login', [LoginController::class, 'index']);
-// Route::post('/authLogin', [LoginController::class, 'processLogin']);
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/authLogin', [LoginController::class, 'processLogin']);
 
-Route::controller(LoginController::class)->group(function () {
-    // Route::get('/login', 'index');
-    Route::post('/authLogin', 'processLogin');
-});
+// Route::controller(LoginController::class)->group(function () {
+//     // Route::get('/login', 'index');
+//     Route::post('/authLogin', 'processLogin');
+// });
 // register
-// Route::get('/register', [RegisterController::class, 'index']);
-Route::controller(RegisterController::class)->group(function () {
-    Route::post('/authRegister', 'create');
-});
+Route::post('/authRegister', [RegisterController::class, 'cretae']);
+// Route::controller(RegisterController::class)->group(function () {
+//     Route::post('/authRegister', 'create');
+// });
 
 //logout
 Route::get('/logout', [LogoutController::class, 'index']);
 
 // Admin Dashboard
-Route::controller(DashboardAdminController::class)->group(function () {
-    Route::get('/dashboard', 'index');
-});
+// Route::controller(DashboardAdminController::class)->group(function () {
+//     Route::get('/dashboard', 'index');
+// });
+Route::get('/dashboard', [DashboardAdminController::class, 'index']);
 //Admin Topik Utama
 Route::controller(TopikUtamaAdminController::class)->group(function () {
     Route::get('/topikUtama', 'index');
@@ -125,6 +126,8 @@ Route::controller(SejarahUserController::class)->group(function () {
 });
 
 //KisahInspiratif
-Route::controller(KisahInspiratifUserController::class)->group(function () {
-    Route::get('/ceritaKisahInspiratif', 'index');
-});
+// Route::controller(KisahInspiratifUserController::class)->group(function () {
+//     Route::get('/ceritaKisahInspiratif', 'index');
+// });
+
+Route::get('/ceritaKisahInspiratif', 'App\Http\Controllers\KisahInspiratifUserController@index');
